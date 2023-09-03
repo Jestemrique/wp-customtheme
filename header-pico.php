@@ -3,19 +3,27 @@
 
 <head>
     <meta charset="<?php bloginfo( 'charset' ); ?>">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title><?php bloginfo( 'name' ); ?></title>
     <?php wp_head() ?>
 </head>
 
 <body <?php body_class(); ?>>
 
+<div class="container">
 <header >
 
-  <h2><a href="<?php echo home_url(); ?>"><?php bloginfo( 'name' ); ?></a></h2>
+<hgroup>
+  <h2><a class="primary" href="<?php echo home_url(); ?>"><?php bloginfo( 'name' ); ?></a></h2>
   <h3><?php bloginfo( 'description' ); ?></h3>
+</hgroup>
 
 
+
+<nav>
+  <ul>
+    <li><strong>Jestemrique</strong></li>
+  </ul>
+<ul>
 <?php
   // Select our menu
   $menu = my_menu_builder('main-menu');
@@ -27,14 +35,18 @@
 
     //Menu item has children
     if (isset($item['children'])) : ?>
-          <a href='<?= $item['url'] ?>'><?= $item['title']; ?></a>
+          <li><a href='<?= $item['url'] ?>'><?= $item['title']; ?></a></li>
           <?php foreach ($item['children'] as $child) : ?>
-            <a  href='<?= $child['url'] ?>'><?= $child['title'] ?></a>
+            <li><a  href='<?= $child['url'] ?>'><?= $child['title'] ?></a></li>
           <?php endforeach; ?>
     <?php else: ?>
-      <a  href='<?= $item['url'] ?>'><?= $item['title']; ?></a>
+      <li><a  href='<?= $item['url'] ?>'><?= $item['title']; ?></a></li>
     <?php endif; ?>
   <?php endforeach;?>
+
+</ul>
+</nav>
+
 
 </header>
 
